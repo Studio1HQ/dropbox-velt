@@ -67,3 +67,69 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Remove editor focus ring / textarea feel */
+/* ================================
+   Paper Document – Prose Styling
+   (Matches previous JSX exactly)
+================================ */
+
+/* Remove editor focus styling */
+.ProseMirror {
+  outline: none;
+}
+
+/* Intro paragraph */
+.ProseMirror p:first-of-type {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+  color: hsl(var(--muted-foreground));
+}
+
+/* Normal paragraphs */
+.ProseMirror p {
+  font-size: 1rem; /* text-base */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+/* Headings (h2) */
+.ProseMirror h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600;
+  margin-top: 2rem; /* mt-8 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Lists */
+.ProseMirror ul {
+  margin-bottom: 1.5rem; /* mb-6 */
+  padding-left: 1.25rem;
+}
+
+/* List items */
+.ProseMirror li {
+  font-size: 1rem; /* text-base */
+  line-height: 1.75;
+  color: hsl(var(--foreground));
+}
+
+/* Bullet color stays neutral */
+.ProseMirror ul li::marker {
+  color: currentColor;
+}
+
+/* Dark mode support (same behavior as before) */
+.dark .ProseMirror p,
+.dark .ProseMirror h2,
+.dark .ProseMirror li {
+  color: hsl(var(--foreground));
+}
+
+.dark .ProseMirror p:first-of-type {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Text selection */
+.ProseMirror ::selection {
+  background-color: rgba(168, 85, 247, 0.25);
+}
