@@ -83,7 +83,6 @@
 .ProseMirror p:first-of-type {
   font-size: 1.125rem; /* text-lg */
   line-height: 1.75; /* leading-relaxed */
-  color: hsl(var(--muted-foreground));
 }
 
 /* Normal paragraphs */
@@ -123,10 +122,6 @@
 .dark .ProseMirror h2,
 .dark .ProseMirror li {
   color: hsl(var(--foreground));
-}
-
-.dark .ProseMirror p:first-of-type {
-  color: hsl(var(--muted-foreground));
 }
 
 /* Text selection */

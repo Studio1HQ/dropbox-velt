@@ -184,6 +184,7 @@ export function PaperDocument() {
         className="
           prose prose-neutral dark:prose-invert
         "
+
       />
 
       <Separator className="my-10" />
