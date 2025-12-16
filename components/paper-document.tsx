@@ -181,10 +181,7 @@ export function PaperDocument() {
       {/* Editor */}
       <EditorContent
         editor={editor}
-        className="
-          prose prose-neutral dark:prose-invert
-        "
-
+        className="prose prose-neutral dark:prose-invert"
       />
 
       <Separator className="my-10" />
