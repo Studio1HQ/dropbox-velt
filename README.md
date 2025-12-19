@@ -1,169 +1,183 @@
-# Drop Box Velt Example (Next.js)
+# Dropbox Paper Clone with Velt Collaboration
 
-A Dropbox-like document collaboration app built with Next.js, Tailwind CSS, Radix UI and [Velt](https://velt.dev), demonstrating real-time commenting and multi-user collaboration on documents.
+A **Dropbox Paper-inspired** document collaboration app built with **Next.js**, **TipTap Editor**, and [**Velt**](https://velt.dev), demonstrating real-time inline commenting and multi-user collaboration features.
 
----
+## ✨ Features
 
-## Features
-
-- 📄 **Document Collaboration**: Collaborative document viewing and editing with real-time updates.
-
-- 🧑‍🤝‍🧑 **Multi-User Support**: Switch between predefined users with avatars.
-
-- 💬 **Real-Time Comments**: Add and view collaborative comments using Velt inline comments.
-
-- 🌓 **Dark/Light Theme**: Toggle between dark and light modes.
-
-- 📊 **Top Bar Navigation**: Header with document title, sharing options, and user management.
-
-- 🔔 **Notifications**: In-app notifications powered by Velt.
-
-- 🧩 **Reusable UI Components**: Built with shadcn/ui and Radix primitives.
+- � **Rich Text Editing** — TipTap-powered editor with full formatting support
+- 💬 **Inline Comments** — Select text and add contextual comments via bubble menu
+- 🧑‍🤝‍🧑 **Multi-User Collaboration** — Switch between predefined users (Nany, Mary) with unique avatars
+- � **Real-Time Presence** — See who else is viewing the document
+- 🔔 **Notifications** — In-app notification system powered by Velt
+- 📋 **Comments Sidebar** — Manage and review all document comments
+- 🌓 **Dark/Light Theme** — Toggle between themes with persistent preference
+- 🎨 **Modern UI** — Built with shadcn/ui components and Tailwind CSS
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-
-- **UI**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
-
-- **Collaboration**: [Velt](https://velt.dev/)
-
-- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/)
-
-- **Icons**: [Lucide React](https://lucide.dev/)
-
-- **Other**: [Radix UI](https://www.radix-ui.com/)
-
----
-
-## Prerequisites
-
-- **Node.js** (v16+ recommended)
-
-- **npm** (v8+ recommended)
+| Category             | Technology                                                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Framework**        | [Next.js](https://nextjs.org/) 13.5 (App Router)                                                                        |
+| **UI Library**       | [React](https://react.dev/) 18.2                                                                                        |
+| **Editor**           | [TipTap](https://tiptap.dev/) 2.2                                                                                       |
+| **Collaboration**    | [Velt SDK](https://velt.dev/) 4.5 + [TipTap Velt Comments](https://www.npmjs.com/package/@veltdev/tiptap-velt-comments) |
+| **Styling**          | [Tailwind CSS](https://tailwindcss.com/) 3.3                                                                            |
+| **UI Components**    | [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/)                                              |
+| **State Management** | [Zustand](https://zustand-demo.pmnd.rs/) 5.0                                                                            |
+| **Icons**            | [Lucide React](https://lucide.dev/)                                                                                     |
+| **Language**         | [TypeScript](https://www.typescriptlang.org/) 5.2                                                                       |
 
 ---
 
-## Getting Started
+## 📋 Prerequisites
 
-1. Clone the repository
+- **Node.js** v16 or higher
+- **npm** v8 or higher (or yarn/pnpm)
+- A **Velt API Key** — [Get one free](https://app.velt.dev)
 
-   ```bash
-   git clone <repository-url>
-   ```
+---
 
-2. Navigate to the project directory
+## 🚀 Getting Started
 
-   ```bash
-   cd drop-box
-   ```
+### 1. Clone the Repository
 
-3. Install dependencies:
+```bash
+git clone <repository-url>
+cd drop-box
+```
 
-   ```bash
-   npm install
-   ```
+### 2. Install Dependencies
 
-4. Create a `.env.local` file with your Velt API key:
+```bash
+npm install
+```
 
-   ```
-   NEXT_PUBLIC_VELT_ID=your_api_key_here
-   ```
+### 3. Configure Environment Variables
 
-   > Note: You can get your API key from the [Velt Dashboard](https://app.velt.dev)
+Create a `.env` file in the root directory:
 
-5. Run the development server:
+```env
+NEXT_PUBLIC_VELT_ID=your_velt_api_key_here
+```
 
-   ```bash
-   npm run dev
-   ```
+> 💡 **Tip:** Get your API key from the [Velt Dashboard](https://app.velt.dev)
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser
+### 4. Start Development Server
 
-## Project Structure
+```bash
+npm run dev
+```
+
+### 5. Open in Browser
+
+Navigate to [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📁 Project Structure
 
 ```
 drop-box/
-
-├── app/                 # Next.js app directory
-│   ├── (app)/           # App layout and page components
-├── components/          # React components
-│   ├── ui/              # UI components (shadcn/ui)
-├── helper/              # Users DB and state management
-├── hooks/               # Custom hooks (theme provider)
-├── lib/                 # Utility functions
+├── app/
+│   ├── (app)/
+│   │   ├── layout.tsx       # App layout with VeltProvider & ThemeProvider
+│   │   └── page.tsx         # Main page with TopBar and PaperDocument
+│   ├── globals.css          # Global styles and Tailwind directives
+│   └── layout.tsx           # Root layout with HTML structure
+├── components/
+│   ├── ui/                  # shadcn/ui components
+│   │   ├── avatar.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   └── separator.tsx
+│   ├── paper-document.tsx   # TipTap editor with Velt comments integration
+│   └── top-bar.tsx          # Header with user switcher, presence, notifications
+├── helper/
+│   └── userdb.ts            # User store (Zustand) & predefined users
+├── hooks/
+│   └── use-theme.tsx        # Theme provider and toggle functionality
+├── lib/
+│   └── utils.ts             # Utility functions (cn helper)
+├── .env                     # Environment variables (Velt API key)
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
-## Velt Integration
+---
 
-This project uses Velt SDK v4.5.9 for real-time collaboration features:
+## 🔗 Velt Integration
 
-### Core Features
-
-- User presence and cursor tracking
-- Comments and annotations
-- Notifications
-- Real-time updates
+This project demonstrates **Velt's TipTap integration** for adding collaborative comments to rich text documents.
 
 ### Velt Components Used
 
-- `VeltProvider`: Main provider component for Velt integration
-- `VeltInlineCommentsSection`: Inline commenting system
-- `VeltNotificationsTool`: Notification system
-- `VeltCommentsSidebar`: Comments management sidebar
-- `VeltPresence`: To show active users
-- `VeltSidebarButton`: Button to toggle comments sidebar
+| Component               | Purpose                                                    |
+| ----------------------- | ---------------------------------------------------------- |
+| `VeltProvider`          | Main provider wrapping the app for Velt SDK initialization |
+| `VeltPresence`          | Displays active users viewing the document                 |
+| `VeltNotificationsTool` | Shows notification bell with comment updates               |
+| `VeltSidebarButton`     | Toggle button for comments sidebar                         |
+| `VeltCommentsSidebar`   | Sidebar panel showing all comments                         |
+
+### TipTap Velt Plugin
+
+The editor uses `@veltdev/tiptap-velt-comments` for inline comments:
+
+```tsx
+import {
+  TiptapVeltComments,
+  renderComments,
+  addComment,
+} from "@veltdev/tiptap-velt-comments";
+import { useCommentAnnotations } from "@veltdev/react";
+
+// In editor extensions
+TiptapVeltComments.configure({ persistVeltMarks: false });
+
+// Render existing comments
+renderComments({ editor, editorId, commentAnnotations });
+
+// Add new comment on selected text
+addComment({ editor, editorId });
+```
 
 ### Configuration
 
-The application uses the following Velt configurations:
+| Setting          | Value                              |
+| ---------------- | ---------------------------------- |
+| Document ID      | `drop-box-velt`                    |
+| Organization ID  | `organization_id`                  |
+| Predefined Users | Nany (`user001`), Mary (`user002`) |
 
-- Document ID: "drop-box-velt"
-- User authentication with predefined users (Nany, Mary)
-- Custom comment bubble styling
-- Dark/Light mode support
+---
 
-## Troubleshooting
+## 🎯 How to Use
 
-### Common Issues
+1. **Switch Users** — Click the user dropdown in the top bar to switch between Nany and Mary
+2. **Add Comments** — Select text in the document, then click the comment icon in the bubble menu
+3. **View Comments** — Click the sidebar button to see all comments
+4. **Toggle Theme** — Use the theme toggle button to switch between light and dark modes
+5. **View Presence** — See other active users' avatars in the top bar
 
-1. **Velt API Key Issues**
+## 📚 Documentation & Resources
 
-   - Ensure your API key is correctly set in `.env.local`
-   - Verify the key is active in your Velt Dashboard
+### Velt
 
-2. **Collaboration Features Not Working**
-
-   - Check browser console for errors
-   - Verify network connectivity
-   - Ensure you're using a supported browser
-
-3. **Build Issues**
-   - Clear `.next` directory and node_modules
-   - Run `npm install` again
-   - Check Node.js version compatibility
-
-## Documentation
-
-### Velt Resources
-
-- [Velt Documentation](https://docs.velt.dev/getting-started/introduction)
-- [Velt API Reference](https://docs.velt.dev/api-reference)
+- [Velt Documentation](https://docs.velt.dev)
+- [TipTap Integration Guide](https://docs.velt.dev/text-editor-setup/overview)
+- [Velt API Reference](https://docs.velt.dev/api-reference/sdk/react)
 - [Velt Dashboard](https://app.velt.dev)
-- [Velt GitHub](https://github.com/veltdev)
+
+### TipTap Editor
+
+- [TipTap Documentation](https://tiptap.dev/docs)
+- [TipTap Extensions](https://tiptap.dev/docs/extensions)
 
 ### UI Components
 
-- [Shadcn UI Documentation](https://ui.shadcn.com/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs)
+- [Radix UI Primitives](https://www.radix-ui.com/primitives)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-
-## Contributing
-
-Feel free to submit issues and enhancement requests. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
