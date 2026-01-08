@@ -15,9 +15,6 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import {
   MessageCircle,
-  MessageSquare,
-  AtSign,
-  Plus,
 } from "lucide-react";
 
 const EDITOR_ID = "paper-document-editor";
@@ -186,21 +183,6 @@ export function PaperDocument() {
 
       <Separator className="my-10" />
 
-      {/* Footer Toolbar */}
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={onAddComment} className="gap-2">
-          <MessageSquare className="h-4 w-4" />
-          Comment
-        </Button>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <AtSign className="h-4 w-4" />
-          Mention
-        </Button>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <Plus className="h-4 w-4" />
-          Add content
-        </Button>
-      </div>
     </div>
   );
 }
